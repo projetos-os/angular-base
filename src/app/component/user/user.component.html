@@ -1,0 +1,50 @@
+<section class="content-header">
+  <section class="content-header">
+    <h1>
+      {{pageTitle}}
+
+    </h1>
+    <ol class="breadcrumb">
+      <li *ngFor="let m of bc" [ngClass]="m.class"><a href="#"><i [ngClass]="m.icon"></i> {{m.title}}</a></li>
+    </ol>
+  </section>
+  <section class="content">
+
+    <div class="box">
+
+      <div class="box-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>E-Mail</th>
+              <th>Nascimento</th>
+              <th>Nacionalidade</th>
+              <th>CPF</th>
+              <th>
+              <button routerLink="add" type="button" class="btn btn-success">Adicionar</button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let u of usuarios">
+              <td>{{u.idUser}}</td>
+              <td>{{u.nome}}</td>
+              <td>{{u.email}}</td>
+              <td>{{u.nascimento | date:"d/MM/y"}}</td>
+              <td>{{u.nacionalidade}}</td>
+              <td>{{u.cpf}}</td>
+              <td style="width:120px;">
+                <button routerLink="edit/{{u.idUser}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button>
+                &nbsp;
+                <button routerLink="del/{{u.idUser}}" class="btn btn-danger btn-sm"><i class="fa fa-remove"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+</section>
