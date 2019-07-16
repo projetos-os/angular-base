@@ -94,8 +94,8 @@ export class UserCadastroComponent implements OnInit {
 
     this.usuario.email = this.cadastroForm.get('email').value;
     let dataForm: NgbDate = this.cadastroForm.get('nascimento').value;
-    if (dataForm) {
-      this.usuario.nascimento = new Date(dataForm.year, dataForm.month, dataForm.day);
+    if (dataForm) {      
+      this.usuario.nascimento = new Date(dataForm.year, dataForm.month-1, dataForm.day);
     }
     this.usuario.nome = this.cadastroForm.get('nome').value;
     this.usuario.cpf = this.cadastroForm.get('cpf').value;
@@ -156,12 +156,9 @@ export class UserCadastroComponent implements OnInit {
 
 
   setDate(date): NgbDateStruct {
-    var startDate = new Date(date);
-    let startYear = startDate.getUTCFullYear().toString();
-    let startMonth = startDate.getUTCMonth().toString();
-    let startDay = startDate.getUTCDate().toString()
-    
-    return this.ngbDateParserFormatter.parse(startYear + "-" + startMonth + "-" + startDay);
+    var startDate = new Date(date);        
+    return {year:startDate.getUTCFullYear(),month:startDate.getUTCMonth()+1,day:startDate.getUTCDate()}
+
   }
 
 
